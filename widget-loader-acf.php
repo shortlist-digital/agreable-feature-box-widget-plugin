@@ -1,20 +1,22 @@
 <?php
+
+$key = 'widget_feature_box';
 $widgetplacement = self::$config['tab_placement'];
 
 $widget_config = array (
-	'key' => 'widget_feature_box',
+	'key' => $key,
 	'name' => 'feature-box',
 	'label' => 'Feature Box',
 	'display' => 'block',
 	'sub_fields' => array (
 		array (
-			'key' => 'button_basic_details_tab',
+			'key' => $key . '_basic_details_tab',
 			'label' => 'Basic Details',
 			'type' => 'tab',
 			'placement' => $widgetplacement,
 		),
 		array (
-			'key' => 'widget_feature_box_image',
+			'key' => $key . '_image',
 			'label' => 'Image',
 			'name' => 'image',
 			'type' => 'image',
@@ -25,7 +27,7 @@ $widget_config = array (
 			'library' => 'all',
 		),
 		array (
-			'key' => 'widget_feature_box_has_flash_caption',
+			'key' => $key . '_has_flash_caption',
 			'label' => 'Do you want to add a flash caption?',
 			'name' => 'has_flash_caption',
 			'type' => 'true_false',
@@ -38,7 +40,7 @@ $widget_config = array (
 			)
 		),
 		array (
-			'key' => 'widget_feature_box_flash_caption',
+			'key' => $key . '_flash_caption',
 			'label' => 'Flash caption',
 			'name' => 'flash_caption',
 			'type' => 'text',
@@ -46,7 +48,7 @@ $widget_config = array (
 			'conditional_logic' => array (
 				array (
 					array (
-						'field' => 'widget_feature_box_has_flash_caption',
+						'field' => $key . '_has_flash_caption',
 						'operator' => '==',
 						'value' => '1',
 					),
@@ -57,14 +59,14 @@ $widget_config = array (
 			)
 		),
 		array (
-			'key' => 'widget_feature_box_heading',
+			'key' => $key . '_heading',
 			'label' => 'Paragraph Heading',
 			'name' => 'paragraph_heading',
 			'type' => 'text',
 			'required' => 1,
 		),
 		array (
-			'key' => 'widget_feature_box_text',
+			'key' => $key . '_text',
 			'label' => 'Paragraph Text',
 			'name' => 'paragraph_text',
 			'type' => 'strict_wysiwyg',
@@ -72,7 +74,7 @@ $widget_config = array (
 			'simplify' => true
 		),
 		array (
-			'key' => 'widget_feature_box_switch_sides',
+			'key' => $key . '_switch_sides',
 			'label' => 'Reverse layout (Image on right, Text on left)',
 			'name' => 'switch_sides',
 			'type' => 'true_false',
@@ -82,7 +84,7 @@ $widget_config = array (
 			)
 		),
 		array (
-			'key' => 'widget_feature_box_has_underline',
+			'key' => $key . '_has_underline',
 			'label' => 'Do you want to underline the heading',
 			'name' => 'has_underline',
 			'type' => 'true_false',
@@ -97,5 +99,5 @@ $widget_config = array (
 	)
 );
 
-$widget_config["content-types"] = array('sponsored_longform', 'sponsored_hub');
+$widget_config["content-types"] = get_option("options_" . $key . "_available_post_types");
 $widget_config["content-sizes"] = array('main', 'main-full-bleed'); // main, main-full-bleed, sidebar
